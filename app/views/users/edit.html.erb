@@ -1,0 +1,35 @@
+<%= form_with model: @user, local: true do |form| %>
+    <% if @user.errors.any? %>
+      <div class="errors">
+        <h2>There were some errors with your submission:</h2>
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <div>
+      <%= form.label :username, "Your username here" %>
+      <%= form.text_field :username, placeholder: "Enter your username", value: @user.username %>
+    </div>
+  
+    <div>
+      <%= form.label :email, "Your email here" %>
+      <%= form.email_field :email, placeholder: "example@example.com", value: @user.email %>
+    </div>
+  
+    <div>
+      <%= form.label :password, "Choose a password" %>
+      <%= form.password_field :password, placeholder: "Password" %>
+    </div>
+  
+    <div>
+      <%= form.label :password_confirmation, "Confirm password" %>
+      <%= form.password_field :password_confirmation, placeholder: "Confirm your password" %>
+    </div>
+  
+    <%= form.submit "Update Account" %>
+  <% end %>
+  
